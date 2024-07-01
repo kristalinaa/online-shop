@@ -37,6 +37,14 @@ namespace prov.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] User user)
         {
+            //try
+            //{
+            //    if(user == null)
+            //    {
+            //        return null;
+            //    }
+            //    if(!IsValidEmail)
+            //}
             await _userService.CreateUser(user);
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
@@ -44,7 +52,7 @@ namespace prov.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateUser(int id, [FromBody] User user)
         {
-            if (id != user.Id)
+            if (id.ToString() != user.Id)
             {
                 return BadRequest();
             }

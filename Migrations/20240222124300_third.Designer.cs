@@ -12,8 +12,8 @@ using prov.Data;
 namespace prov.Migrations
 {
     [DbContext(typeof(ProvDbContext))]
-    [Migration("20240222124300_third")]
-    partial class third
+    [Migration("20240222124300_forth")]
+    partial class forth
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

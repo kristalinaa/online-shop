@@ -1,13 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using prov.Models;
 
 namespace prov.Data
 {
-    public class ProvDbContext : DbContext
+    public class ProvDbContext : IdentityDbContext<User>
     {
-        public ProvDbContext(DbContextOptions options) : base(options)
+        
+
+        public ProvDbContext()
         {
         }
+        public ProvDbContext(DbContextOptions<ProvDbContext> options) : base(options)
+        {
+        }
+
 
         private DbSet<User> User { get; set; }
         private DbSet<BankAccount> BankAccount { get; set; }
@@ -21,7 +29,7 @@ namespace prov.Data
         {
             modelBuilder.Entity<BankAccount>().HasKey(x => x.Id);
 
-            modelBuilder.Entity<User>().HasKey(x => x.Id);
+           modelBuilder.Entity<User>().HasKey(x => x.Id);
             modelBuilder.Entity<Category>().HasKey(x => x.Id);
             modelBuilder.Entity<Product>().HasKey(x => x.Id);
             modelBuilder.Entity<BankTransaction>().HasKey(x => x.Id);
