@@ -20,9 +20,9 @@ namespace prov.Models
         [Required]
         public string PhoneNumber { get; set; }
         public ICollection<BankAccount> bankAccounts { get; set; }
-        [ForeignKey(nameof(IdentityUser))]
-        public string IdentityUserId { get; private set; }
-        public IdentityUser IdentityUser { get; private set; }
+        //[ForeignKey(nameof(IdentityUser))]
+        //public string IdentityUserId { get; private set; }
+        //public IdentityUser IdentityUser { get; private set; }
 
 
         public User(string Name, string Surname, string Adress, string Email, string Password, string PhoneNumber) {

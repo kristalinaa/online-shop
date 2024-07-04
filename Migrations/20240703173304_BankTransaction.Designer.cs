@@ -12,8 +12,8 @@ using prov.Data;
 namespace prov.Migrations
 {
     [DbContext(typeof(ProvDbContext))]
-    [Migration("20240626085352_FixError")]
-    partial class FixError
+    [Migration("20240703173304_BankTransaction")]
+    partial class BankTransaction
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -472,7 +472,7 @@ namespace prov.Migrations
             modelBuilder.Entity("prov.Models.BankAccount", b =>
                 {
                     b.HasOne("prov.Models.User", "user")
-                        .WithMany()
+                        .WithMany("bankAccounts")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -518,6 +518,11 @@ namespace prov.Migrations
             modelBuilder.Entity("prov.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("prov.Models.User", b =>
+                {
+                    b.Navigation("bankAccounts");
                 });
 #pragma warning restore 612, 618
         }
